@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="MauiAppYagamiQuizz.ResultPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="#2C3E50"
+             Shell.NavBarIsVisible="False">
+
+    <Grid>
+        <!-- Status Bar Background -->
+        <BoxView Color="#1A252F" HeightRequest="50" VerticalOptions="Start" />
+
+        <StackLayout Padding="20,60,20,20" Spacing="30" VerticalOptions="Center">
+
+            <!-- Close Button -->
+            <Button Text="✕" 
+                    BackgroundColor="Transparent" 
+                    TextColor="White" 
+                    FontSize="24" 
+                    WidthRequest="50" 
+                    HeightRequest="50" 
+                    HorizontalOptions="End"
+                    Clicked="OnCloseClicked" />
+
+            <!-- Result Card -->
+            <Frame BackgroundColor="#E8F4FD" 
+                   CornerRadius="20" 
+                   Padding="30" 
+                   HasShadow="True"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center">
+
+                <StackLayout Spacing="20" HorizontalOptions="Center">
+
+                    <!-- Trophy Icon -->
+                    <Label Text="🏆" 
+                           FontSize="60" 
+                           HorizontalOptions="Center" />
+
+                    <!-- Confetti Effect (using emoji) -->
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="5">
+                        <Label Text="🎉" FontSize="16" />
+                        <Label Text="✨" FontSize="16" />
+                        <Label Text="🎊" FontSize="16" />
+                        <Label Text="⭐" FontSize="16" />
+                        <Label Text="🌟" FontSize="16" />
+                    </StackLayout>
+
+                    <!-- Congrats Text -->
+                    <Label Text="Congrats!" 
+                           FontSize="28" 
+                           FontAttributes="Bold" 
+                           TextColor="#2C3E50" 
+                           HorizontalOptions="Center" />
+
+                    <!-- Score -->
+                    <Label x:Name="ScoreLabel"
+                           Text="90% Score" 
+                           FontSize="32" 
+                           FontAttributes="Bold" 
+                           TextColor="#27AE60" 
+                           HorizontalOptions="Center" />
+
+                    <!-- Completion Message -->
+                    <Label Text="Quiz completed successfully." 
+                           FontSize="16" 
+                           TextColor="#7F8C8D" 
+                           HorizontalOptions="Center" />
+
+                    <!-- Statistics -->
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="5">
+                        <Label Text="You attempt" 
+                               FontSize="14" 
+                               TextColor="#7F8C8D" />
+                        <Label x:Name="QuestionsAttemptedLabel"
+                               Text="60 questions" 
+                               FontSize="14" 
+                               FontAttributes="Bold" 
+                               TextColor="#3498DB" />
+                        <Label Text="and" 
+                               FontSize="14" 
+                               TextColor="#7F8C8D" />
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="5">
+                        <Label Text="from that" 
+                               FontSize="14" 
+                               TextColor="#7F8C8D" />
+                        <Label x:Name="CorrectAnswersLabel"
+                               Text="55 answer" 
+                               FontSize="14" 
+                               FontAttributes="Bold" 
+                               TextColor="#27AE60" />
+                        <Label Text="is correct." 
+                               FontSize="14" 
+                               TextColor="#7F8C8D" />
+                    </StackLayout>
+
+                    <!-- Share Section -->
+                    <StackLayout Spacing="15" Margin="0,20,0,0">
+                        <Label Text="Share with us :" 
+                               FontSize="14" 
+                               TextColor="#7F8C8D" 
+                               HorizontalOptions="Center" />
+
+                        <!-- Social Media Icons -->
+                        <StackLayout Orientation="Horizontal" 
+                                     HorizontalOptions="Center" 
+                                     Spacing="15">
+
+                            <!-- Instagram -->
+                            <Frame BackgroundColor="#34495E" 
+                                   CornerRadius="20" 
+                                   Padding="10" 
+                                   HasShadow="False"
+                                   WidthRequest="40"
+                                   HeightRequest="40">
+                                <Label Text="📷" 
+                                       FontSize="18" 
+                                       TextColor="White" 
+                                       HorizontalOptions="Center" 
+                                       VerticalOptions="Center" />
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnInstagramShare" />
+                                </Frame.GestureRecognizers>
+                            </Frame>
+
+                            <!-- Facebook -->
+                            <Frame BackgroundColor="#34495E" 
+                                   CornerRadius="20" 
+                                   Padding="10" 
+                                   HasShadow="False"
+                                   WidthRequest="40"
+                                   HeightRequest="40">
+                                <Label Text="f" 
+                                       FontSize="20" 
+                                       FontAttributes="Bold"
+                                       TextColor="White" 
+                                       HorizontalOptions="Center" 
+                                       VerticalOptions="Center" />
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnFacebookShare" />
+                                </Frame.GestureRecognizers>
+                            </Frame>
+
+                            <!-- WhatsApp -->
+                            <Frame BackgroundColor="#34495E" 
+                                   CornerRadius="20" 
+                                   Padding="10" 
+                                   HasShadow="False"
+                                   WidthRequest="40"
+                                   HeightRequest="40">
+                                <Label Text="💬" 
+                                       FontSize="18" 
+                                       TextColor="White" 
+                                       HorizontalOptions="Center" 
+                                       VerticalOptions="Center" />
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnWhatsAppShare" />
+                                </Frame.GestureRecognizers>
+                            </Frame>
+
+                        </StackLayout>
+                    </StackLayout>
+
+                </StackLayout>
+            </Frame>
+
+        </StackLayout>
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="MauiAppYagamiQuizz.MainPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="#2C3E50"
+             Shell.NavBarIsVisible="False">
+
+    <Grid>
+        <!-- Status Bar Background -->
+        <BoxView Color="#1A252F" HeightRequest="50" VerticalOptions="Start" />
+
+        <ScrollView>
+            <StackLayout Padding="20,60,20,20" Spacing="20">
+
+                <!-- Header -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" 
+                           Text="Quiz App" 
+                           FontSize="24" 
+                           FontAttributes="Bold" 
+                           TextColor="White" 
+                           VerticalOptions="Center" />
+
+                    <Frame Grid.Column="1" 
+                           BackgroundColor="#34495E" 
+                           CornerRadius="20" 
+                           Padding="10" 
+                           HasShadow="False">
+                        <Label Text="👤" FontSize="20" TextColor="White" />
+                    </Frame>
+                </Grid>
+
+                <!-- Score Card -->
+                <Frame BackgroundColor="#E67E22" 
+                       CornerRadius="15" 
+                       Padding="20" 
+                       HasShadow="True">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout Grid.Column="0">
+                            <Label Text="Question Count" 
+                                   FontSize="14" 
+                                   TextColor="White" 
+                                   Opacity="0.8" />
+                            <Label Text="230" 
+                                   FontSize="32" 
+                                   FontAttributes="Bold" 
+                                   TextColor="White" />
+                        </StackLayout>
+
+                        <StackLayout Grid.Column="1">
+                            <Label Text="Your Ranking" 
+                                   FontSize="14" 
+                                   TextColor="White" 
+                                   Opacity="0.8" />
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="1250" 
+                                       FontSize="32" 
+                                       FontAttributes="Bold" 
+                                       TextColor="White" />
+                                <Label Text="▲" 
+                                       FontSize="20" 
+                                       TextColor="White" 
+                                       VerticalOptions="Center" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+
+                <!-- Category Buttons -->
+                <StackLayout x:Name="CategoryButtonsStack" Spacing="15">
+
+                </StackLayout>
+
+                <!-- Upgrade Button -->
+                <Button Text="UPGRADE" 
+                        BackgroundColor="#BDC3C7" 
+                        TextColor="#2C3E50" 
+                        FontSize="16" 
+                        FontAttributes="Bold" 
+                        HeightRequest="50" 
+                        CornerRadius="25" 
+                        Margin="0,20,0,0"
+                        Clicked="OnUpgradeClicked" />
+
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>
