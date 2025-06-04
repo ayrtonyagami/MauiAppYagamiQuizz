@@ -1,13 +1,9 @@
-﻿namespace MauiAppYagamiQuizz
+﻿using MauiAppYagamiQuizz.Data;
+
+namespace MauiAppYagamiQuizz
 {
     public partial class MainPage : ContentPage
     {
-        private readonly List<string> categories = new()
-        {
-
-            "🧪 Science & Nature",
-            "🌍 Geography"
-        };
         public MainPage()
         {
             InitializeComponent();
@@ -16,7 +12,7 @@
 
         private void LoadCategoryButtons()
         {
-            foreach (var category in categories)
+            foreach (var category in CategoryRepository.GetAll())
             {
                 var button = new Button
                 {
@@ -43,9 +39,17 @@
             try
             {
                 var button = sender as Button;
-                var category = button?.Text?.Split(' ', 2)[1];
+                var categoryName = button?.Text;
+                int categoryId = CategoryRepository.GetCategoryIdByName(categoryName);
 
-                await Navigation.PushAsync(new QuizPage(category));
+                if (categoryId > 0)
+                {
+                    await Navigation.PushAsync(new QuizPage(categoryId));
+                }
+                else
+                {
+                    await DisplayAlert("Erro", "Categoria não encontrada.", "OK");
+                }
             }
             finally
             {

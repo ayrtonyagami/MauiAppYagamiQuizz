@@ -90,7 +90,7 @@
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnAnswerSelected" />
                     </Frame.GestureRecognizers>
-                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="20">
+                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
                         <Label Grid.Column="0" Text="B" FontSize="20" FontAttributes="Bold" TextColor="#2C3E50" />
                         <Label Grid.Column="1" x:Name="OptionBLabel" Text="Opção B" FontSize="18" TextColor="#2C3E50" />
                     </Grid>

@@ -8,6 +8,9 @@ namespace MauiAppYagamiQuizz.Models
 {
     public class QuestionModel
     {
+        public int Id { get; set; }
+
+        public int CategoryId { get; set; } // Usar ID da categoria, em vez do nome
         public string QuestionText { get; set; } = string.Empty;
         public string OptionA { get; set; } = string.Empty;
         public string OptionB { get; set; } = string.Empty;

@@ -9,23 +9,27 @@ public partial class QuizPage : ContentPage
     private System.Timers.Timer _timer;
     private int _timeInSeconds = 180;
     private string _selectedAnswer = "";
-    private string _category;
+    private int _categoryId;
     private List<QuestionModel> _questions;
     private int _currentQuestionIndex = 0;
     private int _correctAnswers = 0;
 
-    public QuizPage(string category)
+    public QuizPage(int categoryId)
     {
         InitializeComponent();
-        _category = category;
-        CategoryLabel.Text = category ?? "Science and Nature";
-        _questions = QuestionRepository.GetQuestionsByCategory(category);
+        _categoryId = categoryId;
+
+        CategoryLabel.Text = CategoryRepository.GetCategoryNameById(_categoryId);
+
+        LoadQuestion();
         LoadQuestion();
         StartTimer();
     }
 
     private void LoadQuestion()
     {
+        _questions = QuestionRepository.GetQuestionsByCategory(_categoryId);
+
         if (_currentQuestionIndex >= _questions.Count)
         {
             EndQuiz();

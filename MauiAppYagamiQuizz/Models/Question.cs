@@ -2,14 +2,11 @@
 
 namespace MauiAppYagamiQuizz.Models
 {
-    [Table("Questions")]
     public class Question
     {
-        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
-        [MaxLength(100)]
-        public string Category { get; set; }
+        public int CategoryId { get; set; } // Usar ID da categoria, em vez do nome
 
         [MaxLength(500)]
         public string QuestionText { get; set; }
@@ -27,10 +24,11 @@ namespace MauiAppYagamiQuizz.Models
         public string OptionD { get; set; }
 
         [MaxLength(1)]
-        public string CorrectAnswer { get; set; } // A, B, C, or D
+        public string CorrectAnswer { get; set; } // A, B, C ou D
 
-        public int DifficultyLevel { get; set; } // 1-Easy, 2-Medium, 3-Hard
+        public int DifficultyLevel { get; set; } // 1-Fácil, 2-Médio, 3-Difícil
 
         public DateTime CreatedAt { get; set; }
     }
+
 }
