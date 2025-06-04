@@ -22,13 +22,12 @@ public partial class QuizPage : ContentPage
         CategoryLabel.Text = CategoryRepository.GetCategoryNameById(_categoryId);
 
         LoadQuestion();
-        LoadQuestion();
         StartTimer();
     }
 
     private void LoadQuestion()
     {
-        _questions = QuestionRepository.GetQuestionsByCategory(_categoryId);
+        _questions ??= QuestionRepository.GetQuestionsByCategory(_categoryId);
 
         if (_currentQuestionIndex >= _questions.Count)
         {
@@ -86,11 +85,51 @@ public partial class QuizPage : ContentPage
         }
 
         var currentQuestion = _questions[_currentQuestionIndex];
+
+        // Verifica se a resposta está correta
         if (_selectedAnswer == currentQuestion.CorrectOption)
             _correctAnswers++;
 
+        // Mostra feedback visual
+        HighlightCorrectAndWrongAnswers(currentQuestion.CorrectOption, _selectedAnswer);
+
+        // Aguarda 2 segundos antes de avançar
+        await Task.Delay(2000);
+
         _currentQuestionIndex++;
         LoadQuestion();
+    }
+
+    private void HighlightCorrectAndWrongAnswers(string correct, string selected)
+    {
+        Frame correctFrame = GetFrameByOption(correct);
+        correctFrame.BackgroundColor = Colors.Green;
+
+        var correctGrid = correctFrame.Content as Grid;
+        if (correctGrid?.Children[1] is Label correctLabel)
+            correctLabel.TextColor = Colors.White;
+
+        if (selected != correct)
+        {
+            Frame selectedFrame = GetFrameByOption(selected);
+            selectedFrame.BackgroundColor = Colors.Red;
+
+            var selectedGrid = selectedFrame.Content as Grid;
+            if (selectedGrid?.Children[1] is Label selectedLabel)
+                selectedLabel.TextColor = Colors.White;
+        }
+    }
+
+    private Frame GetFrameByOption(string option)
+    {
+        return option switch
+        {
+            "A" => OptionA,
+            "B" => OptionB,
+            "C" => OptionC,
+            "D" => OptionD,
+            _ => throw new ArgumentException("Invalid option letter")
+        };
     }
 
     private async void EndQuiz()
