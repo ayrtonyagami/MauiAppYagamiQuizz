@@ -1,4 +1,5 @@
-﻿using MauiAppYagamiQuizz.Models;
+﻿using Android.Webkit;
+using MauiAppYagamiQuizz.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,26 +10,29 @@ namespace MauiAppYagamiQuizz.Data
 {
     public static class CategoryRepository
     {
-        public static List<Category> Categories = new List<Category>
+        public static List<Question> GetQuestionsByCategory(int categoryId)
         {
-            new Category { Id = 1, Name = "Matemática" },
-            new Category { Id = 2, Name = "História" },
-            new Category { Id = 3, Name = "Ciências" },
-            new Category { Id = 4, Name = "Geografia" },
-        };
+            using var db = new AppDbContext();
+            return db.Questions
+                .Where(q => q.CategoryId == categoryId)
+                .ToList();
+        }
 
         public static List<string> GetAll()
         {
-            return Categories.Select(c=>c.Name).ToList();
+            using var db = new AppDbContext();
+            return db.Categories.Select(c=>c.Name).ToList();
         }
         public static int GetCategoryIdByName(string name)
         {
-            return Categories.FirstOrDefault(c => c.Name == name)?.Id ?? -1;
+            using var db = new AppDbContext();
+            return db.Categories.FirstOrDefault(c => c.Name == name)?.Id ?? -1;
         }
 
         public static string GetCategoryNameById(int id)
         {
-            return Categories.FirstOrDefault(c => c.Id == id)?.Name ?? "Desconhecida";
+            using var db = new AppDbContext();
+            return db.Categories.FirstOrDefault(c => c.Id == id)?.Name ?? "Desconhecida";
         }
     }
 

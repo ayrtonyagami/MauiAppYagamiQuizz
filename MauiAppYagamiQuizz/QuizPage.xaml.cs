@@ -10,7 +10,7 @@ public partial class QuizPage : ContentPage
     private int _timeInSeconds = 180;
     private string _selectedAnswer = "";
     private int _categoryId;
-    private List<QuestionModel> _questions;
+    private List<Question> _questions;
     private int _currentQuestionIndex = 0;
     private int _correctAnswers = 0;
 
