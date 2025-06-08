@@ -1,5 +1,4 @@
-﻿using Android.Webkit;
-using MauiAppYagamiQuizz.Models;
+﻿using MauiAppYagamiQuizz.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,11 +17,13 @@ namespace MauiAppYagamiQuizz.Data
                 .ToList();
         }
 
-        public static List<string> GetAll()
+
+        public static List<Category> GetAll()
         {
             using var db = new AppDbContext();
-            return db.Categories.Select(c=>c.Name).ToList();
+            return db.Categories.ToList();
         }
+
         public static int GetCategoryIdByName(string name)
         {
             using var db = new AppDbContext();
@@ -34,6 +35,44 @@ namespace MauiAppYagamiQuizz.Data
             using var db = new AppDbContext();
             return db.Categories.FirstOrDefault(c => c.Id == id)?.Name ?? "Desconhecida";
         }
+
+
+
+        public static Category? GetById(int id)
+        {
+            using var db = new AppDbContext();
+            return db.Categories.Find(id);
+        }
+
+
+
+        public static void Add(Category category)
+        {
+            using var db = new AppDbContext();
+            db.Categories.Add(category);
+            db.SaveChanges();
+        }
+
+        public static void Update(Category category)
+        {
+            using var db = new AppDbContext();
+            db.Categories.Update(category);
+            db.SaveChanges();
+        }
+
+        public static void Delete(int id)
+        {
+            using var db = new AppDbContext();
+            var category = db.Categories.Find(id);
+            if (category != null)
+            {
+                db.Categories.Remove(category);
+                db.SaveChanges();
+            }
+        }
+
+
+
     }
 
 }

@@ -39,6 +39,7 @@ public partial class QuizPage : ContentPage
 
         var question = _questions[_currentQuestionIndex];
         QuestionLabel.Text = question.QuestionText;
+        QuizInfoLabel.Text = "Pergunta: " + question.Id;
         OptionALabel.Text = question.OptionA;
         OptionBLabel.Text = question.OptionB;
         OptionCLabel.Text = question.OptionC;

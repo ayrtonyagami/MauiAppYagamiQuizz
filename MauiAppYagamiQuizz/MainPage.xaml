@@ -82,7 +82,7 @@
                 </StackLayout>
 
                 <!-- Upgrade Button -->
-                <Button Text="UPGRADE" 
+                <Button Text="Importar" 
                         BackgroundColor="#BDC3C7" 
                         TextColor="#2C3E50" 
                         FontSize="16" 
@@ -90,7 +90,7 @@
                         HeightRequest="50" 
                         CornerRadius="25" 
                         Margin="0,20,0,0"
-                        Clicked="OnUpgradeClicked" />
+                        Clicked="OnImportClicked" />
 
             </StackLayout>
         </ScrollView>

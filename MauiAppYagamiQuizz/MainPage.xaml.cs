@@ -16,7 +16,7 @@ namespace MauiAppYagamiQuizz
             {
                 var button = new Button
                 {
-                    Text = category,
+                    Text = category.Name,
                     BackgroundColor = Color.FromArgb("#34495E"),
                     TextColor = Colors.White,
                     FontSize = 16,
@@ -57,9 +57,9 @@ namespace MauiAppYagamiQuizz
             }
         }
 
-        private async void OnUpgradeClicked(object sender, EventArgs e)
+        private async void OnImportClicked(object sender, EventArgs e)
         {
-            await DisplayAlert("Upgrade", "Upgrade functionality would be implemented here.", "OK");
+            await Navigation.PushAsync(new ImportPage());
         }
     }
 
