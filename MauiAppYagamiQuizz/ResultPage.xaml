@@ -61,14 +61,14 @@
                            HorizontalOptions="Center" />
 
                     <!-- Completion Message -->
-                    <Label Text="Quiz completed successfully." 
+                    <Label Text="Questionário concluído com sucesso." 
                            FontSize="16" 
                            TextColor="#7F8C8D" 
                            HorizontalOptions="Center" />
 
                     <!-- Statistics -->
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="5">
-                        <Label Text="You attempt" 
+                        <Label Text="Tentou" 
                                FontSize="14" 
                                TextColor="#7F8C8D" />
                         <Label x:Name="QuestionsAttemptedLabel"
@@ -82,7 +82,7 @@
                     </StackLayout>
 
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="5">
-                        <Label Text="from that" 
+                        <Label Text="e dessas" 
                                FontSize="14" 
                                TextColor="#7F8C8D" />
                         <Label x:Name="CorrectAnswersLabel"
@@ -90,14 +90,14 @@
                                FontSize="14" 
                                FontAttributes="Bold" 
                                TextColor="#27AE60" />
-                        <Label Text="is correct." 
+                        <Label Text="estão corretas." 
                                FontSize="14" 
                                TextColor="#7F8C8D" />
                     </StackLayout>
 
                     <!-- Share Section -->
                     <StackLayout Spacing="15" Margin="0,20,0,0">
-                        <Label Text="Share with us :" 
+                        <Label Text="Partilha :" 
                                FontSize="14" 
                                TextColor="#7F8C8D" 
                                HorizontalOptions="Center" />

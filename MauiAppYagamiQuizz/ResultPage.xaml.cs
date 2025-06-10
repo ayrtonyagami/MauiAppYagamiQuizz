@@ -20,9 +20,9 @@ public partial class ResultPage : ContentPage
 
     private void UpdateResultDisplay()
     {
-        ScoreLabel.Text = $"{_scorePercentage}% Score";
-        QuestionsAttemptedLabel.Text = $"{_totalQuestions} questions";
-        CorrectAnswersLabel.Text = $"{_correctAnswers} answer";
+        ScoreLabel.Text = $"{_scorePercentage}% Pontos";
+        QuestionsAttemptedLabel.Text = $"{_totalQuestions} questões";
+        CorrectAnswersLabel.Text = $"{_correctAnswers} respostas";
     }
 
     private async void OnCloseClicked(object sender, EventArgs e)
@@ -35,11 +35,11 @@ public partial class ResultPage : ContentPage
     {
         try
         {
-            var message = $"Just scored {_scorePercentage}% on the Quiz App! Got {_correctAnswers} out of {_totalQuestions} questions correct. 🎉";
+            var message = $"Acabei de pontuar {_scorePercentage}% na aplicação Quiz! Acertei {_correctAnswers} de {_totalQuestions} perguntas. 🎉";
             await Share.RequestAsync(new ShareTextRequest
             {
                 Text = message,
-                Title = "Quiz Results"
+                Title = "Resultados"
             });
         }
         catch (Exception ex)
@@ -52,11 +52,11 @@ public partial class ResultPage : ContentPage
     {
         try
         {
-            var message = $"Just scored {_scorePercentage}% on the Quiz App! Got {_correctAnswers} out of {_totalQuestions} questions correct. 🎉";
+            var message = $"Acabei de pontuar {_scorePercentage}% na aplicação Quiz! Acertei {_correctAnswers} de {_totalQuestions} perguntas. 🎉";
             await Share.RequestAsync(new ShareTextRequest
             {
                 Text = message,
-                Title = "Quiz Results"
+                Title = "Resultados"
             });
         }
         catch (Exception ex)
@@ -69,11 +69,11 @@ public partial class ResultPage : ContentPage
     {
         try
         {
-            var message = $"Just scored {_scorePercentage}% on the Quiz App! Got {_correctAnswers} out of {_totalQuestions} questions correct. 🎉";
+            var message = $"Acabei de pontuar {_scorePercentage}% na aplicação Quiz! Acertei {_correctAnswers} de {_totalQuestions} perguntas. 🎉";
             await Share.RequestAsync(new ShareTextRequest
             {
                 Text = message,
-                Title = "Quiz Results"
+                Title = "Resultados"
             });
         }
         catch (Exception ex)

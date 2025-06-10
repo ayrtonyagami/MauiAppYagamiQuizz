@@ -20,7 +20,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Grid.Column="0" 
-                           Text="Quiz App" 
+                           Text="Yagamiz Quizzes" 
                            FontSize="24" 
                            FontAttributes="Bold" 
                            TextColor="White" 
@@ -47,7 +47,7 @@
                         </Grid.ColumnDefinitions>
 
                         <StackLayout Grid.Column="0">
-                            <Label Text="Question Count" 
+                            <Label Text="Questões" 
                                    FontSize="14" 
                                    TextColor="White" 
                                    Opacity="0.8" />
@@ -58,7 +58,7 @@
                         </StackLayout>
 
                         <StackLayout Grid.Column="1">
-                            <Label Text="Your Ranking" 
+                            <Label Text="Pontuação" 
                                    FontSize="14" 
                                    TextColor="White" 
                                    Opacity="0.8" />

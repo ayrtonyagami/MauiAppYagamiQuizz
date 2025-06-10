@@ -7,7 +7,7 @@ namespace MauiAppYagamiQuizz;
 public partial class QuizPage : ContentPage
 {
     private System.Timers.Timer _timer;
-    private int _timeInSeconds = 180;
+    private int _timeInSeconds = 300;
     private string _selectedAnswer = "";
     private int _categoryId;
     private List<Question> _questions;
@@ -28,7 +28,7 @@ public partial class QuizPage : ContentPage
     private void LoadQuestion()
     {
         _questions ??= QuestionRepository.GetQuestionsByCategory(_categoryId);
-
+        _timeInSeconds = _questions.Count * 7 * 4;
         if (_currentQuestionIndex >= _questions.Count)
         {
             EndQuiz();
@@ -81,7 +81,7 @@ public partial class QuizPage : ContentPage
     {
         if (string.IsNullOrEmpty(_selectedAnswer))
         {
-            await DisplayAlert("No Answer Selected", "Please select an answer.", "OK");
+            await DisplayAlert("Nenhuma resposta selecionada", "Selecione uma resposta.", "OK");
             return;
         }
 
@@ -129,7 +129,7 @@ public partial class QuizPage : ContentPage
             "B" => OptionB,
             "C" => OptionC,
             "D" => OptionD,
-            _ => throw new ArgumentException("Invalid option letter")
+            _ => throw new ArgumentException("Letra de opção inválida")
         };
     }
 
@@ -162,7 +162,7 @@ public partial class QuizPage : ContentPage
         {
             MainThread.BeginInvokeOnMainThread(async () =>
             {
-                await DisplayAlert("Time's Up!", "Quiz time has ended.", "OK");
+                await DisplayAlert("Acabou o tempo!", "O tempo do quiz acabou.", "OK");
                 EndQuiz();
             });
         }
@@ -188,7 +188,7 @@ public partial class QuizPage : ContentPage
     private async void OnCloseClicked(object sender, EventArgs e)
     {
         StopTimer();
-        var result = await DisplayAlert("Exit Quiz", "Are you sure you want to exit?", "Yes", "No");
+        var result = await DisplayAlert("Quiz de saída", "Tem a certeza que pretende sair?", "Sim", "Não");
         if (result) await Navigation.PopAsync();
         else StartTimer();
     }
