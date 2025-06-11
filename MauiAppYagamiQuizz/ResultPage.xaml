@@ -76,13 +76,13 @@
                                FontSize="14" 
                                FontAttributes="Bold" 
                                TextColor="#3498DB" />
-                        <Label Text="and" 
+                        <Label Text="e" 
                                FontSize="14" 
                                TextColor="#7F8C8D" />
                     </StackLayout>
 
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="5">
-                        <Label Text="e dessas" 
+                        <Label Text=" dessas" 
                                FontSize="14" 
                                TextColor="#7F8C8D" />
                         <Label x:Name="CorrectAnswersLabel"
