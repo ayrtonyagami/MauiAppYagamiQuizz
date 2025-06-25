@@ -9,129 +9,132 @@
         <!-- Status Bar Background -->
         <BoxView Color="#1A252F" HeightRequest="50" VerticalOptions="Start" />
 
-        <StackLayout Padding="20,60,20,20" Spacing="30">
+        <!-- Conteúdo com rolagem -->
+        <ScrollView>
+            <StackLayout Padding="20,60,20,20" Spacing="30">
 
-            <!-- Header -->
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
+                <!-- Header -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
 
-                <Label Grid.Column="0" 
-                       Text="🧪" 
-                       FontSize="20" 
+                    <Label Grid.Column="0" 
+                           Text="🧪" 
+                           FontSize="20" 
+                           TextColor="White" 
+                           VerticalOptions="Center" />
+
+                    <Label Grid.Column="1" 
+                           x:Name="CategoryLabel"
+                           Text="Categoria" 
+                           FontSize="18" 
+                           FontAttributes="Bold" 
+                           TextColor="White" 
+                           HorizontalOptions="Center" 
+                           VerticalOptions="Center" />
+
+                    <Button Grid.Column="2" 
+                            Text="x" 
+                            BackgroundColor="Transparent" 
+                            TextColor="White" 
+                            FontSize="20" 
+                            WidthRequest="40" 
+                            HeightRequest="50"
+                            Clicked="OnCloseClicked" />
+                </Grid>
+
+                <!-- Quiz Info -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" 
+                           x:Name="QuizInfoLabel"
+                           Text="Quiz : 60" 
+                           FontSize="16" 
+                           TextColor="White" />
+
+                    <Label Grid.Column="1" 
+                           x:Name="TimeLabel"
+                           Text="03:00 min" 
+                           FontSize="16" 
+                           TextColor="White" />
+                </Grid>
+
+                <!-- Question -->
+                <Label x:Name="QuestionLabel"
+                       Text="Aqui vai a pergunta..." 
+                       FontSize="16" 
                        TextColor="White" 
-                       VerticalOptions="Center" />
+                       LineBreakMode="WordWrap" />
 
-                <Label Grid.Column="1" 
-                       x:Name="CategoryLabel"
-                       Text="Categoria" 
-                       FontSize="18" 
-                       FontAttributes="Bold" 
-                       TextColor="White" 
-                       HorizontalOptions="Center" 
-                       VerticalOptions="Center" />
+                <!-- Answer Options -->
+                <StackLayout x:Name="AnswerOptionsContainer" Spacing="12">
 
-                <Button Grid.Column="2" 
-                        Text="x" 
-                        BackgroundColor="Transparent" 
+                    <!-- Opção A -->
+                    <Frame x:Name="OptionA" BackgroundColor="#BDC3C7" CornerRadius="12" Padding="10" HasShadow="True">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnAnswerSelected" />
+                        </Frame.GestureRecognizers>
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                            <Label Grid.Column="0" Text="A" FontSize="20" FontAttributes="Bold" TextColor="#2C3E50" />
+                            <Label Grid.Column="1" x:Name="OptionALabel" Text="Opção A" FontSize="18" TextColor="#2C3E50" />
+                        </Grid>
+                    </Frame>
+
+                    <!-- Opção B -->
+                    <Frame x:Name="OptionB" BackgroundColor="#BDC3C7" CornerRadius="12" Padding="10" HasShadow="True">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnAnswerSelected" />
+                        </Frame.GestureRecognizers>
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                            <Label Grid.Column="0" Text="B" FontSize="20" FontAttributes="Bold" TextColor="#2C3E50" />
+                            <Label Grid.Column="1" x:Name="OptionBLabel" Text="Opção B" FontSize="18" TextColor="#2C3E50" />
+                        </Grid>
+                    </Frame>
+
+                    <!-- Opção C -->
+                    <Frame x:Name="OptionC" BackgroundColor="#BDC3C7" CornerRadius="12" Padding="10" HasShadow="True">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnAnswerSelected" />
+                        </Frame.GestureRecognizers>
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                            <Label Grid.Column="0" Text="C" FontSize="20" FontAttributes="Bold" TextColor="#2C3E50" />
+                            <Label Grid.Column="1" x:Name="OptionCLabel" Text="Opção C" FontSize="18" TextColor="#2C3E50" />
+                        </Grid>
+                    </Frame>
+
+                    <!-- Opção D -->
+                    <Frame x:Name="OptionD" BackgroundColor="#BDC3C7" CornerRadius="12" Padding="10" HasShadow="True">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnAnswerSelected" />
+                        </Frame.GestureRecognizers>
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                            <Label Grid.Column="0" Text="D" FontSize="20" FontAttributes="Bold" TextColor="#2C3E50" />
+                            <Label Grid.Column="1" x:Name="OptionDLabel" Text="Opção D" FontSize="18" TextColor="#2C3E50" />
+                        </Grid>
+                    </Frame>
+
+                </StackLayout>
+
+                <!-- Submit Button -->
+                <Button Text="SUBMIT" 
+                        BackgroundColor="#E67E22" 
                         TextColor="White" 
-                        FontSize="20" 
-                        WidthRequest="40" 
-                        HeightRequest="50"
-                        Clicked="OnCloseClicked" />
-            </Grid>
-
-            <!-- Quiz Info -->
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-
-                <Label Grid.Column="0" 
-                       x:Name="QuizInfoLabel"
-                       Text="Quiz : 60" 
-                       FontSize="16" 
-                       TextColor="White" />
-
-                <Label Grid.Column="1" 
-                       x:Name="TimeLabel"
-                       Text="03:00 min" 
-                       FontSize="16" 
-                       TextColor="White" />
-            </Grid>
-
-            <!-- Question -->
-            <Label x:Name="QuestionLabel"
-                   Text="Aqui vai a pergunta..." 
-                   FontSize="16" 
-                   TextColor="White" 
-                   LineBreakMode="WordWrap" />
-
-            <!-- Answer Options -->
-            <StackLayout x:Name="AnswerOptionsContainer" Spacing="12">
-
-                <!-- Opção A -->
-                <Frame x:Name="OptionA" BackgroundColor="#BDC3C7" CornerRadius="12" Padding="10" HasShadow="True">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnAnswerSelected" />
-                    </Frame.GestureRecognizers>
-                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
-                        <Label Grid.Column="0" Text="A" FontSize="20" FontAttributes="Bold" TextColor="#2C3E50" />
-                        <Label Grid.Column="1" x:Name="OptionALabel" Text="Opção A" FontSize="18" TextColor="#2C3E50" />
-                    </Grid>
-                </Frame>
-
-                <!-- Opção B -->
-                <Frame x:Name="OptionB" BackgroundColor="#BDC3C7" CornerRadius="12" Padding="10" HasShadow="True">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnAnswerSelected" />
-                    </Frame.GestureRecognizers>
-                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
-                        <Label Grid.Column="0" Text="B" FontSize="20" FontAttributes="Bold" TextColor="#2C3E50" />
-                        <Label Grid.Column="1" x:Name="OptionBLabel" Text="Opção B" FontSize="18" TextColor="#2C3E50" />
-                    </Grid>
-                </Frame>
-
-                <!-- Opção C -->
-                <Frame x:Name="OptionC" BackgroundColor="#BDC3C7" CornerRadius="12" Padding="10" HasShadow="True">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnAnswerSelected" />
-                    </Frame.GestureRecognizers>
-                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
-                        <Label Grid.Column="0" Text="C" FontSize="20" FontAttributes="Bold" TextColor="#2C3E50" />
-                        <Label Grid.Column="1" x:Name="OptionCLabel" Text="Opção C" FontSize="18" TextColor="#2C3E50" />
-                    </Grid>
-                </Frame>
-
-                <!-- Opção D -->
-                <Frame x:Name="OptionD" BackgroundColor="#BDC3C7" CornerRadius="12" Padding="10" HasShadow="True">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnAnswerSelected" />
-                    </Frame.GestureRecognizers>
-                    <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
-                        <Label Grid.Column="0" Text="D" FontSize="20" FontAttributes="Bold" TextColor="#2C3E50" />
-                        <Label Grid.Column="1" x:Name="OptionDLabel" Text="Opção D" FontSize="18" TextColor="#2C3E50" />
-                    </Grid>
-                </Frame>
+                        FontSize="16" 
+                        FontAttributes="Bold" 
+                        HeightRequest="50" 
+                        CornerRadius="25" 
+                        Margin="0,30,0,0"
+                        Clicked="OnSubmitClicked" />
 
             </StackLayout>
-
-            <!-- Submit Button -->
-            <Button Text="SUBMIT" 
-                    BackgroundColor="#E67E22" 
-                    TextColor="White" 
-                    FontSize="16" 
-                    FontAttributes="Bold" 
-                    HeightRequest="50" 
-                    CornerRadius="25" 
-                    Margin="0,30,0,0"
-                    Clicked="OnSubmitClicked" />
-
-        </StackLayout>
+        </ScrollView>
     </Grid>
 
 </ContentPage>
