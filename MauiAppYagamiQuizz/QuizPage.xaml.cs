@@ -12,6 +12,7 @@ public partial class QuizPage : ContentPage
     private int _categoryId;
     private List<Question> _questions;
     private int _currentQuestionIndex = 0;
+    private int _totalQuestions = 0;
     private int _correctAnswers = 0;
 
     public QuizPage(int categoryId)
@@ -34,12 +35,12 @@ public partial class QuizPage : ContentPage
             EndQuiz();
             return;
         }
-
+        _totalQuestions = _questions.Count;
         ResetAllOptions();
 
         var question = _questions[_currentQuestionIndex];
         QuestionLabel.Text = question.QuestionText;
-        QuizInfoLabel.Text = "Pergunta: " + question.Id;
+        QuizInfoLabel.Text = $"Pergunta: {_currentQuestionIndex+1}/{_totalQuestions} ";
         OptionALabel.Text = question.OptionA;
         OptionBLabel.Text = question.OptionB;
         OptionCLabel.Text = question.OptionC;
